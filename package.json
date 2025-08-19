@@ -1,6 +1,9 @@
 {
   "name": "everything-you-ever-wanted-to-know-about-microsoft-orleans-or-why-sergey-and-reuben-are-the-best",
   "version": "1.0.0",
+  "cacheDirectories": [
+    ".next/cache"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
