@@ -40,16 +40,26 @@ var value = await counter.Increment();
 \`\`\`
 
 \`\`\`mermaid
-flowchart LR
-  Client[Client] --> Gateway[Gateway]
-  Gateway --> Directory[Grain Directory]
-  Directory -- lookup/activate --> Silo[Silo]
-  subgraph Silo Host
-    G[CounterGrain activation]\n(identity: account:42)
-  end
-  G --> Storage[(Storage Provider)]
-  note right of G: Turn-based\nconcurrency
-  note bottom of Directory: Location transparency
+  flowchart LR
+    Client[Client] --> Gateway[Gateway]
+    Gateway --> Directory[Grain Directory]
+    Directory -- lookup/activate --> Silo
+
+    subgraph "Silo Host"
+      Silo[Silo]
+      G["CounterGrain activation<br/>(identity: account:42)"]
+    end
+
+    G --> Storage[(Storage Provider)]
+
+    %% Notes as nodes
+    noteG["Turn-based<br/>concurrency"]:::note
+    G --- noteG
+
+    noteDir["Location transparency"]:::note
+    Directory --- noteDir
+
+    classDef note fill:#fff3cd,stroke:#f0ad4e,color:#333,font-size:12px;
 \`\`\``;
   const mermaidRef = useRef(0);
   

@@ -60,8 +60,8 @@ public sealed class CartGrain : Grain, ICartGrain, IRemindable
 \`\`\`mermaid
 flowchart TD
     A[Client] --> B[Gateway]
-    B --> C[CartGrain (activation)]
-    C --> D[(Storage: cartStore)]
+    B --> C["CartGrain (activation)""]
+    C --> D["(Storage: cartStore)""]
     E[Reminder Service] --> C
     F[Stream Provider: Default] --> C
     C -- On demand --> D
